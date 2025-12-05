@@ -123,16 +123,6 @@ export const exportPdf = async (cvId) => {
 };
 
 /**
- * Lấy URL để xem CV dạng PDF
- * @param {string} cvId - ID của CV
- * @returns {string} URL để xem PDF
- */
-export const getCvPdfUrl = (cvId) => {
-  const token = localStorage.getItem('token');
-  return `${import.meta.env.VITE_API_URL}/cvs/${cvId}/export-pdf?token=${token}`;
-};
-
-/**
  * Xóa một CV dựa trên ID.
  * @param {string} cvId - ID của CV cần xóa.
  * @returns {Promise<Object>} - Tin nhắn xác nhận từ backend.
@@ -187,6 +177,25 @@ export const renameCv = async (cvId, name) => {
     return response.data;
   } catch (error) {
     console.error(`Error renaming CV with ID ${cvId}:`, error);
+    throw error;
+  }
+};
+
+/**
+ * Upload an image (e.g. for CV profile).
+ * @param {FormData} formData - FormData containing the 'image' file.
+ * @returns {Promise<Object>} The uploaded image data (url, publicId).
+ */
+export const uploadImage = async (formData) => {
+  try {
+    const response = await apiClient.post('/candidate/upload-image', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error uploading image:', error);
     throw error;
   }
 };

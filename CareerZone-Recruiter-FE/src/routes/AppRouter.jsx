@@ -18,12 +18,12 @@ import ArchivedJobs from '@/pages/jobs/ArchivedJobs';
 import RecruiterJobDetail from '@/pages/jobs/RecruiterJobDetail';
 import JobApplications from '@/pages/jobs/JobApplications';
 import ApplicationDetail from '@/pages/jobs/ApplicationDetail';
-import Notifications from '@/pages/notifications';
+import Notifications from '@/pages/Notifications';
 import InterviewList from '@/pages/interviews/InterviewList';
 import InterviewDetail from '@/pages/interviews/InterviewDetail';
 import DeviceTest from '@/components/interviews/DeviceTest';
 import InterviewRoom from '@/components/interviews/InterviewRoom';
-import Candidates from '@/pages/candidates/Candidates';
+import TalentPoolPage from '@/pages/candidates/TalentPoolPage';
 import CandidateComparison from '@/pages/candidates/CandidateComparison';
 import CandidateProfile from '@/pages/candidates/CandidateProfile';
 import Login from '@/pages/auth/Login';
@@ -142,7 +142,7 @@ const AppRouter = () => {
           <Route path="jobs/:jobId/applications/:applicationId" element={<ApplicationDetail />} />
           <Route path="applications/:applicationId" element={<ApplicationDetail />} />
 
-          <Route path="candidates" element={<Candidates />} />
+          <Route path="talent-pool" element={<TalentPoolPage />} />
           <Route path="candidates/compare" element={<CandidateComparison />} />
           <Route path="candidates/:userId" element={<CandidateProfile />} />
           <Route path="interviews" element={<InterviewList />} />
